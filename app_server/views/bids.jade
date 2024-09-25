@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title Bids - Auction System
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+  body
+    header
+      h1 Bids
+      nav
+        ul.navbar
+          li: a(href='/') Home
+          li: a(href='/about') About
+          li: a(href='/auctions') Auctions
+          li: a(href='/bids') Bids
+          li: a(href='/reviews') Reviews
+
+    main
+      section.intro
+        h2 Your Bids
+        p Here you can view the bids you have placed.
+
+      section.bid-list
+        each bid in bids
+          div.bid-item
+            h3= bid.auctionId.productName
+            p Amount: $#{bid.amount}
+            p Bidder Name: #{bid.username}
+            p Status: Active
+          
+      section.bid-form
+        h2 Place a New Bid
+        form(action='/bids', method='POST')
+          label(for='username') Name:
+          input(type='text', id='username', name='username', required)
+          label(for='auctionId') Product:
+          select(id='auctionId', name='auctionId')
+            each auction in auctions
+              option(value=auction._id)= auction.productName
+          label(for='amount') Amount:
+          input(type='number', id='amount', name='amount', required)
+          button(type='submit') Place Bid

@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title Reviews - Auction System
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+  body
+    header
+      h1 Reviews
+      nav
+        ul.navbar
+          li: a(href='/') Home
+          li: a(href='/about') About
+          li: a(href='/auctions') Auctions
+          li: a(href='/bids') Bids
+          li: a(href='/reviews') Reviews
+
+    main
+      section.intro
+        h2 User Reviews
+        p See what our users are saying about us!
+
+      section.review-list
+        each review in reviews
+          div.review-item
+            p= review.comment + " - " + review.username
+
+      section.review-form
+        h2 Leave a Review
+        form(action='/reviews', method='POST')
+          label(for='username') Name:
+          input(type='text', id='username', name='username', required)
+          label(for='comment') Review:
+          textarea(id='comment', name='comment', required)
+          button(type='submit') Submit Review

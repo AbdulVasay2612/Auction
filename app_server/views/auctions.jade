@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title Auctions - Auction System
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+  body
+    header
+      h1 Auctions
+      nav
+        ul.navbar
+          li: a(href='/') Home
+          li: a(href='/about') About
+          li: a(href='/auctions') Auctions
+          li: a(href='/bids') Bids
+          li: a(href='/reviews') Reviews
+
+    main
+      section.intro
+        h2 Current Auctions
+        p Here are the items currently up for auction. Click on any item to place your bid!
+
+      section.auction-list
+        each auction in auctions
+          div.auction-item
+            h3= auction.productName
+            p= auction.productDescription
+            p Product Type: #{auction.productType}
+            p Auction Ends: #{auction.endTime}
+            a.button(href=`/auctions/${auction._id}`) Place Bid
+          
+      section.call-to-action
+        h2 Add Your Product for Auction
+        form(action='/auctions', method='POST')
+          label(for='productName') Product Name:
+          input(type='text', id='productName', name='productName', required)
+          label(for='productDescription') Product Description:
+          textarea(id='productDescription', name='productDescription', required)
+          label(for='productType') Product Type:
+          input(type='text', id='productType', name='productType', required)
+          label(for='endTime') Auction Ends:
+          input(type='datetime-local', id='endTime', name='endTime', required)
+          button(type='submit') Add Auction Item

@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    //- Bootstrap CSS
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    //- Font Awesome CSS
+    link(rel='stylesheet', href='/stylesheets/all.min.css')
+    //- Custom styles
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    //- Navbar
+    nav.navbar.fixed-top.navbar-expand-md.navbar-light.bg-light
+      .container
+        a.navbar-brand(href='/') Online Auction System
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarMain', aria-controls='navbarMain', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarMain.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item
+              a.nav-link(href='/') Home
+            li.nav-item
+              a.nav-link(href='/about') About
+            li.nav-item
+              a.nav-link(href='/auctions') Auctions
+            li.nav-item
+              a.nav-link(href='/bids') Bids
+            li.nav-item
+              a.nav-link(href='/reviews') Reviews
+    //- Main content area
+    .container.mt-5
+      block content
+
+    //- Footer
+    footer.footer.py-3.bg-light.mt-auto
+      .container
+        .row
+          .col-12.text-center
+            small &copy; 2024 Online Auction System
+
+    //- JavaScript files
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+    script(src='/javascripts/bootstrap.min.js')

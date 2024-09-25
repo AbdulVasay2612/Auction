@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title= auction.productName + ' - Auction Details'
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+  body
+    header
+      h1= auction.productName
+      nav
+        ul.navbar
+          li: a(href='/') Home
+          li: a(href='/about') About
+          li: a(href='/auctions') Auctions
+          li: a(href='/bids') Bids
+          li: a(href='/reviews') Reviews
+
+    main
+      section.details
+        h2 Auction Details
+        p Product Description: #{auction.productDescription}
+        p Product Type: #{auction.productType}
+        p Auction Ends: #{auction.endTime}
+        p Current Highest Bid: $#{auction.highestBid || 'No bids yet'}
+
+      section.place-bid
+        h2 Place a Bid
+        form(action=`/bids/place/${auction._id}`, method='POST')
+          label(for='username') Your Name:
+          input(type='text', id='username', name='username', required)
+          label(for='amount') Bid Amount:
+          input(type='number', id='amount', name='amount', required)
+          button(type='submit') Submit Bid
+
+      section.previous-bids
+        h2 Previous Bids
+        if bids.length
+          ul
+            each bid in bids
+              li #{bid.username}: $#{bid.amount}
+        else
+          p No bids placed yet.

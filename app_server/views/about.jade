@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title About Us - Auction System
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+  body
+    header
+      h1 About Our Auction System
+      nav
+        ul.navbar
+          li: a(href='/') Home
+          li: a(href='/about') About
+          li: a(href='/auctions') Auctions
+          li: a(href='/bids') Bids
+          li: a(href='/reviews') Reviews
+
+    main
+      section.intro
+        h2 Our Mission
+        p Our mission is to create a secure and engaging auction platform that connects buyers and sellers in a user-friendly environment.
+
+      section.features
+        h2 What We Offer
+        div.feature
+          h3 User-Friendly Interface
+          p A simple and intuitive interface that makes bidding easy for everyone.
+        div.feature
+          h3 Security
+          p Our platform is built with security in mind, ensuring a safe bidding experience.
+        div.feature
+          h3 Customer Support
+          p Our dedicated team is here to help you with any questions or issues.
+
+      section.call-to-action
+        h2 Join Us Today!
+        p Sign up now to start bidding and selling!
+        a.button(href='/') Sign Up
